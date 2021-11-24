@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+<h1>Uredjaji</h1>
+<div id="devices"></div>
+
+<script type="text/javascript">
+	window.onload = function () {
+		$.ajax({
+			method: "GET",
+			url: "/Device/GetDevices/",
+			dataType: "json",
+			success: function (data) { processDevices(data); console.log(data) }
+		});
+	}
+	function processDevices(devices) {
+		console.log(devices);
+		var div = ""
+		for (let i in devices) {
+			div+=(`<h3 class='device' id= ${devices[i].idDevice} onclick = GetDeviceData(${devices[i].idDevice})>${devices[i].name}</h3>`);
+		}
+		$("#devices").html(div);
+	}
+	function GetDeviceData(ID) {
+		console.log(ID);
+	}
+</script>
