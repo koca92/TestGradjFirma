@@ -1,4 +1,5 @@
-﻿@*
+﻿@using TestGradjFirma.Data
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -6,6 +7,16 @@
 }
 
 <h1>Uredjaji</h1>
+@{
+	using(var db = new Context()){
+		var n = db.Users.Where(q => q.Email == "dskof").ToList<User>();
+		foreach(var x in n)
+		{
+			<td>@x.Email</td>
+
+		}
+	}
+}
 <div id="devices"></div>
 
 <script type="text/javascript">

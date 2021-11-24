@@ -17,6 +17,7 @@ namespace TestGradjFirma.Controllers
             _signInManager = signInManager;
 
         }
+        [HttpPost]
         public async Task<IActionResult> Login(string username, string password)
         {
 
@@ -49,6 +50,7 @@ namespace TestGradjFirma.Controllers
 
             }
         }
+        
         public IActionResult Login()
         {
 
@@ -58,6 +60,7 @@ namespace TestGradjFirma.Controllers
         {
             return View();
         }
+        [HttpPost]
         public async Task<IActionResult> Register(string username, string password)
         {
             var user = new User
@@ -77,7 +80,7 @@ namespace TestGradjFirma.Controllers
             }
             return RedirectToAction("Index"); ;
         }
-
+        
         public IActionResult Register()
         {
 
